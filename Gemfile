@@ -5,6 +5,7 @@ gem "pg", "~> 0.15"
 gem "bcrypt", "~> 3.1.7"
 gem "puma"
 gem "grape"
+gem "devise"
 
 group :development, :test do
   gem "byebug"
