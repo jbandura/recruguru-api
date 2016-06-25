@@ -4,10 +4,16 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  before_save :ensure_authentication_token
-
   has_many :categories
   has_many :challenges
+  enum role: [:user, :admin]
+
+  after_initialize :set_user_role, if: :new_record?
+  before_save :ensure_authentication_token
+
+  def set_user_role
+    self.role ||= :user
+  end
 
   def ensure_authentication_token
     self.authentication_token ||= generate_authentication_token
