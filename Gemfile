@@ -6,8 +6,9 @@ gem "bcrypt", "~> 3.1.7"
 gem "puma"
 gem "grape"
 gem "devise"
-gem 'grape-active_model_serializers'
-gem 'active_model_serializers'
+gem "grape-active_model_serializers"
+gem "active_model_serializers"
+gem "pundit"
 
 group :development, :test do
   gem "byebug"
