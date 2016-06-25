@@ -1,2 +1,2 @@
 # Recruguru API
-Backend for Recruguru app
+API for Recruguru app
