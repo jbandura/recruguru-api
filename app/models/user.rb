@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
 
   before_save :ensure_authentication_token
 
+  has_many :categories
+
   def ensure_authentication_token
     self.authentication_token ||= generate_authentication_token
   end

@@ -5,4 +5,6 @@ RSpec.describe User do
   ].each do |attribute|
     it { is_expected.to have_attribute attribute }
   end
+
+  it { is_expected.to have_many :categories }
 end
