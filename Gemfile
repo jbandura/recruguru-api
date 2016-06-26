@@ -12,6 +12,8 @@ gem "pundit"
 
 group :development, :test do
   gem "byebug"
+  gem "faker"
+  gem 'pry'
   gem "factory_girl_rails"
   gem "rspec-rails", "~> 3.4"
 end

@@ -6,6 +6,7 @@ module API
       included do
         version "v1"
         default_format :json
+        formatter :json, Grape::Formatter::ActiveModelSerializers
         format :json
 
         helpers do
@@ -24,6 +25,10 @@ module API
 
         rescue_from ActiveRecord::RecordInvalid do |e|
           error_response(message: e.message, status: 422)
+        end
+
+        rescue_from Pundit::NotAuthorizedError do |e|
+          error_response(message: e.message, status: 401)
         end
       end
     end
