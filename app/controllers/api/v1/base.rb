@@ -5,6 +5,7 @@ module API
       helpers Pundit
       mount API::V1::Sessions
       mount API::V1::Categories
+      mount API::V1::Challenges
     end
   end
 end
