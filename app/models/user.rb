@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
 
   has_many :categories
   has_many :challenges
+  has_many :votes
 
   def ensure_authentication_token
     self.authentication_token ||= generate_authentication_token
