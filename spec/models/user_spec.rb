@@ -8,4 +8,5 @@ RSpec.describe User do
 
   it { is_expected.to have_many :categories }
   it { is_expected.to have_many :challenges }
+  it { is_expected.to have_many :votes }
 end

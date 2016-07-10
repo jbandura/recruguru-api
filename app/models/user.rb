@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
 
   has_many :categories
   has_many :challenges
+  has_many :votes
   enum role: [:user, :admin]
 
   after_initialize :set_user_role, if: :new_record?
