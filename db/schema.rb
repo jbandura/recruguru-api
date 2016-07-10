@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160710200159) do
+ActiveRecord::Schema.define(version: 20160710203032) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,16 @@ ActiveRecord::Schema.define(version: 20160710200159) do
   end
 
   add_index "categories", ["user_id"], name: "index_categories_on_user_id", using: :btree
+
+  create_table "challenge_votes", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "challenge_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "challenge_votes", ["challenge_id"], name: "index_challenge_votes_on_challenge_id", using: :btree
+  add_index "challenge_votes", ["user_id"], name: "index_challenge_votes_on_user_id", using: :btree
 
   create_table "challenges", force: :cascade do |t|
     t.string   "title",       null: false
@@ -60,19 +70,9 @@ ActiveRecord::Schema.define(version: 20160710200159) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
-  create_table "votes", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "challenge_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-  end
-
-  add_index "votes", ["challenge_id"], name: "index_votes_on_challenge_id", using: :btree
-  add_index "votes", ["user_id"], name: "index_votes_on_user_id", using: :btree
-
   add_foreign_key "categories", "users"
+  add_foreign_key "challenge_votes", "challenges"
+  add_foreign_key "challenge_votes", "users"
   add_foreign_key "challenges", "categories"
   add_foreign_key "challenges", "users"
-  add_foreign_key "votes", "challenges"
-  add_foreign_key "votes", "users"
 end

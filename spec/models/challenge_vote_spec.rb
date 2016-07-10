@@ -1,4 +1,4 @@
-RSpec.describe Vote do
+RSpec.describe ChallengeVote do
   it { is_expected.to belong_to :challenge }
   it { is_expected.to belong_to :user }
 
