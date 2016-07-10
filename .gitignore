@@ -11,5 +11,5 @@
 /log/*
 !/log/.keep
 /tmp
-/spec/examples.txt
+examples.txt
 
