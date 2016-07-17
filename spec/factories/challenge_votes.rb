@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :vote do
+  factory :challenge_vote do
     user nil
     challenge nil
   end

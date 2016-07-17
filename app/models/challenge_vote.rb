@@ -1,4 +1,4 @@
-class Vote < ActiveRecord::Base
+class ChallengeVote < ActiveRecord::Base
   belongs_to :user
   belongs_to :challenge
 
