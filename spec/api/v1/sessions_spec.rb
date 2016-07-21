@@ -12,6 +12,11 @@ RSpec.describe "API::V1::Sessions" do
       post "/api/v1/sessions", user: { email: user.email, password: "password" }
       expect(token).to eq user.authentication_token
     end
+
+    it "returns 401 when login or password wrong" do
+      post "/api/v1/sessions", user: { email: "wrong@email.com", password: "wrong-password" }
+      expect(response.status).to eq(401)
+    end
   end
 
   describe "DELETE /api/v1/sessions" do
