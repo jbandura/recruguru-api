@@ -13,14 +13,13 @@ module API
             requires :title, type: String
             requires :content, type: String
             requires :solution, type: String
-            requires :user_id, type: Integer
             requires :category_id, type: Integer
           end
         end
 
         post do
           challenge_params = permitted_params[:challenge]
-          Challenge.create!(
+          current_user.challenges.create!(
             title: challenge_params[:title],
             content: challenge_params[:content],
             solution: challenge_params[:solution],
@@ -41,7 +40,6 @@ module API
               requires :title, type: String
               requires :content, type: String
               requires :solution, type: String
-              requires :user_id, type: Integer
               requires :category_id, type: Integer
             end
           end
@@ -54,7 +52,6 @@ module API
               title: challenge_params[:title],
               content: challenge_params[:content],
               solution: challenge_params[:solution],
-              user_id: challenge_params[:user_id],
               category_id: challenge_params[:category_id]
             )
           end
