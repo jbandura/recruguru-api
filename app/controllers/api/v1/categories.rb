@@ -22,6 +22,9 @@ module API
         end
 
         route_param :id do
+          desc "Get category with ID"
+          get { Category.find(params[:id]) }
+
           params do
             requires :id, type: Integer
             requires :category, type: Hash do
